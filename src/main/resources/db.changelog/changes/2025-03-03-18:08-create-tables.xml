@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                                http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="create-city-table" author="Almas Iskak">
+        <createTable tableName="cities">
+            <column name="id" autoIncrement="true" type="bigint" >
+                <constraints nullable="false" primaryKey="true"></constraints>
+            </column>
+            <column name="city_name" type="varchar(255)">
+                <constraints unique="true"></constraints>
+            </column>
+            <column name="city_code" type="varchar(255)">
+                <constraints unique="true"></constraints>
+            </column>
+        </createTable>
+    </changeSet>
+    
+    <changeSet id="create-sensor-table" author="Almas Iskak">
+        <createTable tableName="sensor">
+            <column name="id" autoIncrement="true" type="bigint">
+                <constraints primaryKey="true" nullable="false"></constraints>
+            </column>
+            <column name="sensor_name" type="varchar(255)">
+                <constraints nullable="false"></constraints>
+            </column>
+            <column name="latitude" type="decimal(9,6)">
+                <constraints nullable="false"></constraints>
+            </column>
+            <column name="longitude" type="decimal(9,6)">
+                <constraints nullable="false"></constraints>
+            </column>
+            <column name="city_id" type="bigint">
+                <constraints nullable="false"></constraints>
+            </column>
+        </createTable>
+    </changeSet>
+    
+    <changeSet id="create-air-quality-table" author="Almas Iskak">
+        <createTable tableName="air_quality">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"></constraints>
+            </column>
+            <column name="sensor_id" type="bigint">
+                <constraints nullable="false"></constraints>
+            </column>
+            <column name="temperature" type="bigint">
+                <constraints nullable="false"></constraints>
+            </column>
+            <column name="humidity" type="bigint">
+                <constraints nullable="false"></constraints>
+            </column>
+            <column name="air_pollution" type="bigint">
+                <constraints nullable="false"></constraints>
+            </column>
+            <column name="air_pressure" type="double">
+                <constraints nullable="false"></constraints>
+            </column>
+            <column name="created" type="date">
+                <constraints nullable="false"></constraints>
+            </column>
+            <column name="noise" type="bigint">
+                <constraints nullable="false"></constraints>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="foreign-key-sensor-to-city" author="Almas Iskak">
+        <addForeignKeyConstraint baseTableName="sensor"
+                                 baseColumnNames="city_id"
+                                 constraintName="foreign-key-sensor-to-city"
+                                 referencedTableName="cities"
+                                 referencedColumnNames="id"
+                                    onDelete="CASCADE"></addForeignKeyConstraint>
+    </changeSet>
+
+    <changeSet id="foreign-key-air-quality-to-sensor" author="Almas Iskak">
+        <addForeignKeyConstraint baseTableName="air_quality"
+                                 baseColumnNames="sensor_id"
+                                 constraintName="fk-air-quality-to-sensor"
+                                 referencedTableName="sensor"
+                                 referencedColumnNames="id"
+                                 onDelete="CASCADE"></addForeignKeyConstraint>
+    </changeSet>
+</databaseChangeLog>
