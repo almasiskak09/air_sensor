@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Getter
@@ -15,9 +16,9 @@ public class SensorDto {
 
     private Long id;
     private String sensorName;
-    private int latitude;
-    private int longitude;
+    private BigDecimal latitude;
+    private BigDecimal longitude;
     private Long cityId;
-    private List<AirQualityDto> airQualityDtos;
+    private List<AirQualityDto> airQualityDtoList;
 }
 

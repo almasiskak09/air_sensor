@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Getter
@@ -17,8 +18,8 @@ public class AirQualityDto {
     private Long id;
     private int temperature;
     private int humidity;
-    private int ariPollution;
-    private double airPressure;
+    private int airPollution;
+    private BigDecimal airPressure;
     private int noise;
     private LocalDateTime created;
     private Long sensorId;

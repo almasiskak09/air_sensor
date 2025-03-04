@@ -1,11 +1,14 @@
 package pet.project.sensor.Air.Sensor.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
@@ -23,16 +26,16 @@ public class AirQuality {
     private int temperature;
     private int humidity;
 
-    @Column(name = "ari_pollution")
-    private int ariPollution;
+    @Column(name = "air_pollution")
+    private int airPollution;
 
     @Column(name = "air_pressure")
-    private double airPressure;
+    private BigDecimal airPressure;
     private int noise;
 
     private LocalDateTime created;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "sensor_id")
     private Sensor sensor;
 

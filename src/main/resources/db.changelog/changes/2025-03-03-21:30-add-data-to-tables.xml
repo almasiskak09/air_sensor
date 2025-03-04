@@ -17,49 +17,32 @@
         <insert tableName="cities">
             <column name="city_name" value="Uralsk"></column>
             <column name="city_code" value="07"></column>
-        </insert><insert tableName="cities">
-        <column name="city_name" value="Aktobe"></column>
-        <column name="city_code" value="04"></column>
-    </insert><insert tableName="cities">
-        <column name="city_name" value="Pavlodar"></column>
-        <column name="city_code" value="14"></column>
-    </insert><insert tableName="cities">
-        <column name="city_name" value="Kyzylorda"></column>
-        <column name="city_code" value="11"></column>
-    </insert>
+        </insert>
     </changeSet>
     
     <changeSet id="add-data-to-sensor" author="">
         <insert tableName="sensor">
-            <column name="sensor_name" value="ALMATY_S01"></column>
-            <column name="latitude" value="43.253919,"></column>
+            <column name="sensor_name" value="ALMATY_S01U"></column>
+            <column name="latitude" value="43.253919"></column>
             <column name="longitude" value="76.929085"></column>
             <column name="city_id" value="1"></column>
         </insert>
 
         <insert tableName="sensor">
-            <column name="sensor_name" value="ASTANA_S01"></column>
-            <column name="latitude" value="43.253919,"></column>
+            <column name="sensor_name" value="ASTANA_Y96J"></column>
+            <column name="latitude" value="43.253919"></column>
             <column name="longitude" value="76.929085"></column>
             <column name="city_id" value="2"></column>
         </insert>
 
         <insert tableName="sensor">
-            <column name="sensor_name" value="URALSK_S01"></column>
-            <column name="latitude" value="43.253919,"></column>
+            <column name="sensor_name" value="URALSK_L6YI"></column>
+            <column name="latitude" value="43.253919"></column>
             <column name="longitude" value="76.929085"></column>
             <column name="city_id" value="3"></column>
         </insert>
     </changeSet>
-    
-    <changeSet id="add-data-to-air-quality" author="Almas Iskak">
-        <insert tableName="air_quality">
-            <column name="temperature" value="25"></column>
-            <column name="humidity" value="31"></column>
-            <column name="air_pollution" value="54"></column>
-            <column name="air_pressure" value="29.95"></column>
-            <column name=""
-        </insert>
-    </changeSet>
+
+
 
 </databaseChangeLog>

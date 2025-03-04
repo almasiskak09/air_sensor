@@ -56,11 +56,12 @@
             <column name="air_pollution" type="bigint">
                 <constraints nullable="false"></constraints>
             </column>
-            <column name="air_pressure" type="double">
+            <column name="air_pressure" type="decimal">
                 <constraints nullable="false"></constraints>
             </column>
-            <column name="created" type="date">
-                <constraints nullable="false"></constraints>
+            <column name="created" type="timestamp" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+
             </column>
             <column name="noise" type="bigint">
                 <constraints nullable="false"></constraints>

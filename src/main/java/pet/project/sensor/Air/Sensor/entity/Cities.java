@@ -26,6 +26,6 @@ public class Cities {
     @Column(name = "city_code")
     private String cityCode;
 
-    @OneToMany(mappedBy = "cities", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "city", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Sensor> sensors;
 }

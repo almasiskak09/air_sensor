@@ -17,6 +17,6 @@ public class CitiesDto {
     private Long id;
     private String cityName;
     private String cityCode;
-    private List<SensorDto> sensors;
+    private List<SensorDto> sensorDtoList;
 
 }
