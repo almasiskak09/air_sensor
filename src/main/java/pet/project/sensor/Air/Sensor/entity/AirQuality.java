@@ -35,7 +35,7 @@ public class AirQuality {
 
     private LocalDateTime created;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "sensor_id")
     private Sensor sensor;
 

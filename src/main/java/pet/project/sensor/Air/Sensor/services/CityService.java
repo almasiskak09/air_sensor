@@ -3,6 +3,7 @@ package pet.project.sensor.Air.Sensor.services;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
 import pet.project.sensor.Air.Sensor.dto.CitiesDto;
 import pet.project.sensor.Air.Sensor.entity.Cities;
@@ -27,7 +28,6 @@ public class CityService {
         List<CitiesDto> citiesDtos = citiesMapper.toDtoList(cities);
         return citiesDtos;
     }
-
 
 
 

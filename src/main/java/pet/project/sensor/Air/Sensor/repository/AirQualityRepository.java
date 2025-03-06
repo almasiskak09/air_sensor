@@ -11,4 +11,6 @@ import pet.project.sensor.Air.Sensor.entity.AirQuality;
 @Transactional
 public interface AirQualityRepository extends JpaRepository<AirQuality, Long> {
 
-}
+        AirQuality findTopBySensorIdOrderByCreatedDesc(Long sensorId);
+    }
+

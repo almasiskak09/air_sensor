@@ -4,12 +4,16 @@ package pet.project.sensor.Air.Sensor.webSocket;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.AbstractWebSocketHandler;
+import pet.project.sensor.Air.Sensor.dto.AirQualityDto;
 import pet.project.sensor.Air.Sensor.dto.CitiesDto;
+import pet.project.sensor.Air.Sensor.dto.SensorDto;
+import pet.project.sensor.Air.Sensor.entity.Cities;
 
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;

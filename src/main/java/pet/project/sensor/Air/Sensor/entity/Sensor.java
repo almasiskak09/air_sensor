@@ -30,11 +30,11 @@ public class Sensor {
     @Column(precision = 9, scale = 6)
     private BigDecimal longitude;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "city_id")
     private Cities city;
 
-    @OneToMany(mappedBy = "sensor",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "sensor",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private List<AirQuality> airQualityList;
 
 }

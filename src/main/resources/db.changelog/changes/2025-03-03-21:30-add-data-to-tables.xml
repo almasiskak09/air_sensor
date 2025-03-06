@@ -22,21 +22,28 @@
     
     <changeSet id="add-data-to-sensor" author="">
         <insert tableName="sensor">
-            <column name="sensor_name" value="ALMATY_S01U"></column>
+            <column name="sensor_name" value="ALMATY_A01K"></column>
             <column name="latitude" value="43.253919"></column>
             <column name="longitude" value="76.929085"></column>
             <column name="city_id" value="1"></column>
         </insert>
 
         <insert tableName="sensor">
-            <column name="sensor_name" value="ASTANA_Y96J"></column>
+            <column name="sensor_name" value="ALMATY_A02J"></column>
+            <column name="latitude" value="43.253919"></column>
+            <column name="longitude" value="76.929085"></column>
+            <column name="city_id" value="1"></column>
+        </insert>
+
+        <insert tableName="sensor">
+            <column name="sensor_name" value="ASTANA_S10W"></column>
             <column name="latitude" value="43.253919"></column>
             <column name="longitude" value="76.929085"></column>
             <column name="city_id" value="2"></column>
         </insert>
 
         <insert tableName="sensor">
-            <column name="sensor_name" value="URALSK_L6YI"></column>
+            <column name="sensor_name" value="URALSK_U43L"></column>
             <column name="latitude" value="43.253919"></column>
             <column name="longitude" value="76.929085"></column>
             <column name="city_id" value="3"></column>
