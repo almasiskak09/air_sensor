@@ -37,7 +37,7 @@ public class AirQualityRandomGenerator implements Serializable {
     private final CitiesMapper citiesMapper;
 
     @Transactional
-    @Scheduled(fixedRate = 10000) //запуск каждые 10сек/
+    @Scheduled(fixedRate = 5000) //запуск каждые 10сек/
     public void generateRandomAirQuality() {
         List<Cities> cities = citiesRepository.findAll();
         if (cities.isEmpty()) {
