@@ -2,6 +2,7 @@ package pet.project.sensor.Air.Sensor.services;
 
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import pet.project.sensor.Air.Sensor.dto.SensorDto;
 import pet.project.sensor.Air.Sensor.entity.Sensor;
@@ -13,6 +14,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class SensorService {
 
     private final SensorRepository sensorRepository;
@@ -38,16 +40,23 @@ public class SensorService {
 
 
     public SensorDto addSensor(SensorDto sensorDto) {
-        Sensor addedSensor = sensorMapper.toSensor(sensorDto);
-        sensorRepository.save(addedSensor);
-        return sensorMapper.toSensorDto(addedSensor);
-    }
-
-    public SensorDto updateSensor(SensorDto sensorDto) {
         Sensor sensor = sensorMapper.toSensor(sensorDto);
         sensorRepository.save(sensor);
         return sensorMapper.toSensorDto(sensor);
     }
+
+    public SensorDto updateSensor(SensorDto sensorDto) {
+        Optional<Sensor> foundSensor = sensorRepository.findById(sensorDto.getId());
+        if (foundSensor.isPresent()) {
+            Sensor updatedSensor = sensorRepository.save(sensorMapper.toSensor(sensorDto));
+            return sensorMapper.toSensorDto(updatedSensor);
+        }
+        else {
+            log.error("Данного сенсора по id: "+sensorDto.getId()+" не существует");
+            return null;
+        }
+    }
+
 
     public void deleteSensor(Long id) {
         sensorRepository.deleteById(id);

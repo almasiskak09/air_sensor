@@ -1,0 +1,40 @@
+version: '3.1'
+
+services:
+  main-service:
+    image: 'aligator9/my-pet-air-sensor-project'
+    container_name: 'pet-air-sensor-project'
+    depends_on:
+      - air-sensor-database
+      - rabbitmq
+    ports:
+      - 7777:8000
+    environment:
+      - SERVER_PORT=8000
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://air-sensor-database:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=air-sensor
+      - SPRING_DATASOURCE_PASSWORD=almas0606
+      - SPRING_RABBITMQ_HOST=rabbitmq
+      - SPRING_RABBITMQ_PORT=5672
+      - SPRING_RABBITMQ_USERNAME=guest
+      - SPRING_RABBITMQ_PASSWORD=guest
+
+  air-sensor-database:
+    image: 'postgres'
+    container_name: 'air-sensor-database-container'
+    ports:
+      - 2345:5432
+    environment:
+      - POSTGRES_USER=air-sensor
+      - POSTGRES_PASSWORD=almas0606
+      - POSTGRES_DB=postgres
+
+  rabbitmq:
+    image: 'rabbitmq:3-management'
+    container_name: 'rabbitmq-container'
+    ports:
+      - 5672:5672
+      - 15672:15672
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASSWORD=guest

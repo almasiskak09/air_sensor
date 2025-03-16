@@ -162,9 +162,8 @@
     <button class="refresh-button" onclick="fetchHistory()">Обновить</button>
 </div>
 <div class="container" id="history-container"></div>
-
 <script>
-    const socket = new WebSocket("ws://localhost:8000/sensor");
+    const socket = new WebSocket("ws://localhost:7777/sensor");
     let citiesMap = new Map();
 
     socket.onmessage = function (event) {
@@ -175,7 +174,7 @@
                 if (!city.cityName) return;
                 citiesMap.set(city.id, city);
             });
-            updateSensorValues();
+            updateSensors();
         } catch (error) {
             console.error("JSON parsing error:", error, event.data);
         }
@@ -260,7 +259,7 @@
     }
 
     function fetchHistory() {
-        fetch("http://localhost:8000/api/sensors/all")
+        fetch("http://localhost:7777/api/sensors/all")
             .then(response => response.json())
             .then(data => {
                 let container = document.getElementById("history-container");
@@ -324,7 +323,7 @@
     }
 
     function fetchInitialData() {
-        fetch("http://localhost:8000/api/sensors/all")
+        return fetch("http://localhost:7777/api/sensors/all")
             .then(response => response.json())
             .then(data => {
                 if (!Array.isArray(data)) data = [data];
@@ -343,22 +342,10 @@
             .catch(error => console.error("Error fetching initial data:", error));
     }
 
-    fetchInitialData().finally(() => {
-        const socket = new WebSocket("ws://localhost:8000/sensor");
-        socket.onmessage = function (event) {
-            try {
-                const data = JSON.parse(event.data);
-                const cityDataArray = Array.isArray(data) ? data : [data];
-                cityDataArray.forEach(city => {
-                    if (city.cityName) citiesMap.set(city.id, city);
-                });
-                updateSensorValues();
-            } catch (error) {
-                console.error("JSON parsing error:", error, event.data);
-            }
-        };
-    });
-
+    // Загружаем начальные данные
+    fetchInitialData();
 </script>
+
+
 </body>
 </html>
